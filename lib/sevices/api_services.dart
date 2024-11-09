@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:netflix/common/utils.dart';
 import 'package:netflix/models/detailed_model.dart';
+import 'package:netflix/models/movie_recomentaion_model.dart';
 import 'package:netflix/models/now_playing_model.dart';
 import 'package:netflix/models/popular_movie_model.dart';
 import 'package:netflix/models/popular_series_model.dart';
@@ -134,12 +135,7 @@ class ApiServices {
     endPoint = "movie/$movieId";
     final url = "$baseUrl$endPoint$key";
     print("url is $url");
-    final responce = await http.get(Uri.parse(url)
-        // , headers: {
-        //   'Authorization':
-        //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NTAyYjhjMDMxYzc5NzkwZmU1YzBiNGY5NGZkNzcwZCIsInN1YiI6IjYzMmMxYjAyYmE0ODAyMDA4MTcyNjM5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N1SoB26LWgsA33c-5X0DT5haVOD4CfWfRhwpDu9eGkc"
-        // }
-        );
+    final responce = await http.get(Uri.parse(url));
     if (responce.statusCode == 200) {
       // print("Success : ${responce.body}");
       print("Movie details is success");
@@ -149,6 +145,16 @@ class ApiServices {
       print("not success");
     }
     throw Exception("Failed to load Movie details ");
+  }
+
+  Future<MovieReccomantaionModel> getMovierecomentaion(movieId) async {
+    endPoint = "movie/$movieId/recommendations";
+    final url = "$baseUrl$endPoint$key";
+    final responce = await http.get(Uri.parse(url));
+    if (responce.statusCode == 200) {
+      return MovieReccomantaionModel.fromJson(jsonDecode(responce.body));
+    }
+    throw Exception("Failed to load getMovierecomentaion ");
   }
 
   Future<SearchModel> searchMovies(String word) async {

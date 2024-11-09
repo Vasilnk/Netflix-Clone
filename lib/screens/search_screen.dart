@@ -8,19 +8,15 @@ import 'package:netflix/sevices/api_services.dart';
 
 class SearchMovies extends StatefulWidget {
   const SearchMovies({super.key});
-
   @override
   State<SearchMovies> createState() => _SearchMoviesState();
 }
 
 class _SearchMoviesState extends State<SearchMovies> {
   TextEditingController searchEditingController = TextEditingController();
-
   ApiServices apiServices = ApiServices();
   late Future<TopSearchModel> topSearchFuture;
-
   SearchModel? searchModel;
-
   Future<void> search(String query) async {
     if (query.isEmpty) return;
 
@@ -196,34 +192,43 @@ class _SearchMoviesState extends State<SearchMovies> {
                             ),
                             itemBuilder: (context, index) {
                               final result = searchModel!.results[index];
-                              return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  searchModel!.results[index].backdropPath ==
-                                          null
-                                      ? Image.asset(
-                                          'assets/images/BrandAssets_Logos_02-NSymbol.jpg',
-                                          fit: BoxFit.cover,
-                                          height: 170,
-                                        )
-                                      : CachedNetworkImage(
-                                          imageUrl:
-                                              "$imageURl${result.backdropPath}",
-                                          height: 170,
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DetailScreen(
+                                              movieId: result.id)));
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    searchModel!.results[index].backdropPath ==
+                                            null
+                                        ? Image.asset(
+                                            'assets/images/BrandAssets_Logos_02-NSymbol.jpg',
+                                            fit: BoxFit.cover,
+                                            height: 170,
+                                          )
+                                        : CachedNetworkImage(
+                                            imageUrl:
+                                                "$imageURl${result.backdropPath}",
+                                            height: 170,
 
-                                          fit: BoxFit.cover,
-                                          // ),
-                                        ),
-                                  Flexible(
-                                    child: Text(
-                                      result.name,
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
+                                            fit: BoxFit.cover,
+                                            // ),
+                                          ),
+                                    Flexible(
+                                      child: Text(
+                                        result.name,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               );
                             },
                           ),

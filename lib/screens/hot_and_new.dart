@@ -18,7 +18,8 @@ class _HotAndNewState extends State<HotAndNew> {
         appBar: AppBar(
           title: const Text(
             "New & Hot",
-            style: TextStyle(fontSize: 20, color: Colors.white),
+            style: TextStyle(
+                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: const [
             Icon(

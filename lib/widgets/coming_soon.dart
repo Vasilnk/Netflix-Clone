@@ -46,7 +46,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       children: [
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 35,
                             ),
                             Text(
@@ -74,38 +74,12 @@ class _ComingSoonState extends State<ComingSoon> {
                                 height: size.height * 0.35,
                                 fit: BoxFit.cover,
                               ),
-                              const SizedBox(height: 8),
-                              const SizedBox(height: 8),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Icon(Icons.notifications_outlined,
-                                          size: 20, color: Colors.white),
-                                      SizedBox(height: 4),
-                                      Text("Remind Me",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10)),
-                                    ],
-                                  ),
-                                  SizedBox(width: 20),
-                                  Column(
-                                    children: [
-                                      Icon(Icons.info_outline,
-                                          size: 20, color: Colors.white),
-                                      SizedBox(height: 4),
-                                      Text("Info",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10)),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  )
-                                ],
+                              const SizedBox(height: 16),
+                              Text(
+                                movie.title,
+                                overflow: TextOverflow.visible,
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -114,24 +88,61 @@ class _ComingSoonState extends State<ComingSoon> {
                     ),
                     Row(
                       children: [
-                        SizedBox(
-                          width: 30,
+                        const SizedBox(
+                          width: 45,
                         ),
-                        Text(
-                          "Coming on ${months[movie.releaseDate.month - 1]} ${movie.releaseDate.day}",
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Coming on ${months[movie.releaseDate.month - 1]} ${movie.releaseDate.day}",
+                              style: const TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: 15,
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.white54,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        const Row(
+                          children: [
+                            Column(
+                              children: [
+                                Icon(Icons.notifications_outlined,
+                                    size: 20, color: Colors.white),
+                                SizedBox(height: 4),
+                                Text("Remind Me",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 10)),
+                              ],
+                            ),
+                            SizedBox(width: 20),
+                            Column(
+                              children: [
+                                Icon(Icons.info_outline,
+                                    size: 20, color: Colors.white),
+                                SizedBox(height: 4),
+                                Text("Info",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 10)),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 10,
+                            )
+                          ],
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        SizedBox(
-                          width: 30,
+                        const SizedBox(
+                          width: 45,
                         ),
                         Expanded(
                           child: Text(

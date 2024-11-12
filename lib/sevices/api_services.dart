@@ -19,6 +19,8 @@ var key = "?api_key=$apiKey";
 late String endPoint;
 
 class ApiServices {
+  // Upcoming Movie
+
   Future<UpcomingModel> getUpcomingMovie() async {
     endPoint = "movie/upcoming";
     final url = "$baseUrl$endPoint$key";
@@ -32,6 +34,8 @@ class ApiServices {
 
     throw Exception("Failed to load upcoming movies ");
   }
+
+  // Popular  Movies
 
   Future<PopularMovieModel> getPopularMovies() async {
     endPoint = "discover/movie";
@@ -47,6 +51,8 @@ class ApiServices {
     throw Exception("Failed to load polpular movies ");
   }
 
+  // Popular tv series
+
   Future<PopularTvSeriesModel> getPopularTvSeries() async {
     endPoint = "movie/top_rated";
     final url = "$baseUrl$endPoint$key";
@@ -60,6 +66,8 @@ class ApiServices {
 
     throw Exception("Failed to load polpular Series ");
   }
+
+  // Top rated series
 
   Future<TopRatedSeriesModel> getTopRatedSeries() async {
     endPoint = "tv/top_rated";
@@ -75,6 +83,8 @@ class ApiServices {
     throw Exception("Failed to load polpular movies ");
   }
 
+  // Tv series
+
   Future<TvSeriesModel> getTvSeriesMovie() async {
     endPoint = "tv/popular";
     final url = "$baseUrl$endPoint$key";
@@ -88,6 +98,8 @@ class ApiServices {
     throw Exception("Failed to TvSeries  movies ");
   }
 
+  // Now playing  Movies
+
   Future<NowPlayingModel> getNowPlayingMovie() async {
     endPoint = "movie/now_playing";
     final url = "$baseUrl$endPoint$key";
@@ -100,6 +112,8 @@ class ApiServices {
 
     throw Exception("Failed to load now playing movies ");
   }
+
+  // Top rated  Movies
 
   Future<TopRatedModel> getTopRatedMovies() async {
     endPoint = "movie/top_rated";
@@ -115,6 +129,8 @@ class ApiServices {
     throw Exception("Failed to load Top rated movies ");
   }
 
+  // Top search  Movies
+
   Future<TopSearchModel> getTopSearches() async {
     endPoint = "movie/popular";
     final url = "$baseUrl$endPoint$key";
@@ -128,6 +144,8 @@ class ApiServices {
 
     throw Exception("Failed to load Top rated movies ");
   }
+
+  //  Movie details
 
   Future<MovieDetailModel> getMovieDetails(movieId) async {
     print(" hi from movie detail function");
@@ -147,6 +165,8 @@ class ApiServices {
     throw Exception("Failed to load Movie details ");
   }
 
+  // More like this Movies
+
   Future<MovieReccomantaionModel> getMovierecomentaion(movieId) async {
     endPoint = "movie/$movieId/recommendations";
     final url = "$baseUrl$endPoint$key";
@@ -156,6 +176,8 @@ class ApiServices {
     }
     throw Exception("Failed to load getMovierecomentaion ");
   }
+
+  // Search Movie
 
   Future<SearchModel> searchMovies(String word) async {
     endPoint = "search/tv?query=$word";

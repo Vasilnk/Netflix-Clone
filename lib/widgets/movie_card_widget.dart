@@ -24,7 +24,7 @@ class MovieCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  headLineText,
+                  "  $headLineText",
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 18),
                 ),

@@ -63,7 +63,7 @@ flutter:
     - assets\Animation - 1730737822771.json
     - assets\images\7124274_netflix_logo_icon.png
     - assets\images\BrandAssets_Logos_02-NSymbol.jpg
-    - assets\images\images.png
+    - assets/images/images.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
